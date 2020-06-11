@@ -1,0 +1,26 @@
+   {% load static %} 
+   {% load filtros_carrito %}
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="/"> <span class="fa fa-home"></span> CARRITO DE COMPRAS</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+      
+        <li class="form-inline my-2 my-lg-0">
+          {% if request.user.is_authenticated %}
+          <ul class="nav navbar-nav navbar-right">
+            <a  href=" {% url 'cerrar_sesion' %}" class="nav-link"><li class="nav-item active"> Bienvenido {{request.user}} <i class="fa fa-sign-in"> Cerrar sesión</i></a>
+            </ul>
+          </li>
+          {%else%}
+          <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item active"><a href=" {% url 'iniciar_sesion' %} " class="nav-link"><i class="fa fa-sign-in" aria-hidden="true"> Iniciar sesión</i></a></li>
+          </ul>
+          {% endif %}
+      </div>
+    </nav>
+         
+          

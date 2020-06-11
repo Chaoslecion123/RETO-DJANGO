@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+    <div class="row">
+        <div class="col-3 mt-5">
+            {% if object.portada %}
+                <img src="{{object.portada.url}}" width='200' heigth='200'>
+            {% endif  %}
+            <p class="card-text">creado: {{object.fecha_creacion}}</p>
+        </div>
+        <div class="col-12">
+            <div class="card-header">
+                <h1>Detalle del Producto</h1>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{object.nombre}} - {% for categoria in object.categorias.all %}{{categoria}} {% endfor %}                
+                    </h5>
+                    
+                    <p class="card-text"> {% for autor in object.autores.all %} Autores: {{autor}} {% endfor %}</p>
+                    <p class="card-text">{{object.resumen}} - <span class="text-danger">$/{{object.costo}}</span></p>
+                </div>
+                <div class=card-footer>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock contenido %}
